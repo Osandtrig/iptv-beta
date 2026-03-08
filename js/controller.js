@@ -1,19 +1,26 @@
-
 window.onload = function(){
 
 const channelList = document.getElementById("channelList");
 
 channels.forEach(function(channel){
 
-let button = document.createElement("button");
+let card = document.createElement("div");
+card.className = "channel-card";
 
-button.innerText = channel.name;
+let logo = document.createElement("img");
+logo.src = channel.logo;
 
-button.onclick = function(){
+let name = document.createElement("p");
+name.innerText = channel.name;
+
+card.appendChild(logo);
+card.appendChild(name);
+
+card.onclick = function(){
 playChannel(channel.stream);
 };
 
-channelList.appendChild(button);
+channelList.appendChild(card);
 
 });
 

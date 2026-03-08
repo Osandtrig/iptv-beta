@@ -3,6 +3,11 @@ function playChannel(url){
 
 const video = document.getElementById("videoPlayer");
 
+if(!video){
+console.error("Video player no encontrado");
+return;
+}
+
 if(Hls.isSupported()){
 
 const hls = new Hls();

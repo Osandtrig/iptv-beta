@@ -1,27 +1,26 @@
+
 window.onload = function(){
 
-const channelList = document.getElementById("channelList");
+const list = document.getElementById("channelList");
 
-channels.forEach(function(channel){
+channels.forEach(channel => {
 
 let card = document.createElement("div");
 card.className = "channel-card";
 
-let logo = document.createElement("img");
-logo.src = channel.logo;
+let img = document.createElement("img");
+img.src = channel.logo;
 
 let name = document.createElement("p");
 name.innerText = channel.name;
 
-card.appendChild(logo);
+card.appendChild(img);
 card.appendChild(name);
 
-card.onclick = function(){
-playChannel(channel.stream);
-};
+card.onclick = () => playChannel(channel.stream);
 
-channelList.appendChild(card);
+list.appendChild(card);
 
 });
 
-};
+}

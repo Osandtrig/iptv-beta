@@ -1,6 +1,7 @@
 
+```html
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
 <meta charset="UTF-8">
@@ -16,7 +17,12 @@
 
 <div class="player-container">
 
-<video id="videoPlayer" controls width="800"></video>
+<video
+id="videoPlayer"
+controls
+width="800"
+poster="https://dummyimage.com/800x450/000/fff&text=Selecciona+un+canal">
+</video>
 
 </div>
 
@@ -24,8 +30,10 @@
 
 <div id="channelList"></div>
 
+<!-- Librería para reproducir streams IPTV -->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
+<!-- Arquitectura MVC -->
 <script src="model/channels.js"></script>
 <script src="js/player.js"></script>
 <script src="js/controller.js"></script>
@@ -33,3 +41,5 @@
 </body>
 
 </html>
+```
+

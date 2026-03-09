@@ -232,5 +232,45 @@ padding:20px;
 
 }
 
+  .country-section{
+
+max-width:1200px;
+margin:auto;
+margin-bottom:20px;
+
+}
+
+.country-header{
+
+background:#1c1c1c;
+padding:15px;
+border-radius:10px;
+cursor:pointer;
+font-weight:500;
+box-shadow:0 4px 10px rgba(0,0,0,0.4);
+
+}
+
+.country-header:hover{
+
+background:#e50914;
+
+}
+
+.country-channels{
+
+display:none;
+grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+gap:20px;
+padding:20px 0;
+
+}
+
+.country-channels.open{
+
+display:grid;
+
+}
+  
 }
 

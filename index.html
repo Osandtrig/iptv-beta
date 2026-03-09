@@ -1,73 +1,60 @@
 
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📺 Mi Plataforma IPTV</title>
+  <link rel="stylesheet" href="css/style.css">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mi Plataforma IPTV</title>
-
-<link rel="stylesheet" href="css/style.css">
-
+  <!-- Librerías de player -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.4.3/shaka-player.compiled.js"></script>
 </head>
 
 <body>
 
-<header>
-<h1>📺 Mi Plataforma IPTV</h1>
-</header>
+  <header>
+    <h1>📺 Mi Plataforma IPTV</h1>
+  </header>
 
+  <!-- reproductor -->
+  <section class="player-section">
+    <div class="player-wrapper">
+      <video id="videoPlayer" controls autoplay></video>
+    </div>
+  </section>
 
-<!-- reproductor -->
+  <!-- panel control -->
+  <section class="control-panel">
+    <h3>🔗 Cargar lista IPTV</h3>
+    <div class="playlist-loader">
+      <input id="playlistUrl" placeholder="Pega aquí la URL de tu lista .m3u">
+      <button id="loadPlaylist">Cargar lista</button>
+    </div>
 
-<section class="player-section">
+    <!-- filtros -->
+    <div class="filters">
+      <label for="filterCountry">País:</label>
+      <select id="filterCountry">
+        <option value="Todos">Todos</option>
+      </select>
 
-<div class="player-wrapper">
+      <label for="filterCategory">Categoría:</label>
+      <select id="filterCategory">
+        <option value="Todos">Todos</option>
+      </select>
+    </div>
+  </section>
 
-<video id="videoPlayer" controls autoplay></video>
+  <!-- lista de canales -->
+  <h2>Canales</h2>
+  <div id="channelList"></div>
 
-</div>
-
-</section>
-
-
-
-<!-- panel control -->
-
-<section class="control-panel">
-
-<h3>🔗 Cargar lista IPTV</h3>
-
-<div class="playlist-loader">
-
-<input 
-id="playlistUrl" 
-placeholder="Pega aquí la URL de tu lista .m3u">
-
-<button id="loadPlaylist">
-Cargar lista
-</button>
-
-</div>
-
-</section>
-
-
-
-<!-- lista de canales -->
-
-<h2>Canales</h2>
-
-<div id="channelList"></div>
-
-
-
-<script src="js/controller.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/controller.js"></script>
 
 </body>
-
 </html>
 

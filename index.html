@@ -20,11 +20,24 @@
 </div>
 </section>
 
+  <h2>Cargar lista IPTV</h2>
+  
 <section class="playlist-loader">
 <input id="m3uUrl" placeholder="Pega aquí la URL de tu lista .m3u">
 <button onclick="loadPlaylist()">Cargar lista</button>
 </section>
+<div class="filters">
 
+<select id="countryFilter">
+<option value="">Todos los países</option>
+</select>
+
+<select id="languageFilter">
+<option value="">Todos los idiomas</option>
+</select>
+
+</div>
+  
 <h2>Canales</h2>
 <div id="channelList"></div>
 

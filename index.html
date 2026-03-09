@@ -1,14 +1,11 @@
 
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
 <meta charset="UTF-8">
 <title>Mi Plataforma IPTV</title>
-
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -18,20 +15,18 @@
 </header>
 
 <section class="player-section">
-
 <div class="player-wrapper">
 <video id="videoPlayer" controls></video>
 </div>
-
 </section>
 
-<section>
+<section class="playlist-loader">
+<input id="m3uUrl" placeholder="Pega aquí la URL de tu lista .m3u">
+<button onclick="loadPlaylist()">Cargar lista</button>
+</section>
 
 <h2>Canales</h2>
-
 <div id="channelList"></div>
-
-</section>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
@@ -40,8 +35,5 @@
 <script src="js/controller.js"></script>
 
 </body>
-
 </html>
-
-
 

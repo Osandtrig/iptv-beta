@@ -1,167 +1,138 @@
 
+const video = document.getElementById("videoPlayer")
+const loadBtn = document.getElementById("loadPlaylist")
+const urlInput = document.getElementById("playlistUrl")
+const channelList = document.getElementById("channelList")
 
-let channels = [];
-
-
-/* cargar lista IPTV */
+loadBtn.addEventListener("click", loadPlaylist)
 
 async function loadPlaylist(){
 
-const url = document.getElementById("m3uUrl").value;
+const url = urlInput.value.trim()
 
 if(!url){
 
-alert("Ingresa una URL de lista IPTV");
-
-return;
+alert("Pega una URL .m3u primero")
+return
 
 }
 
 try{
 
-const response = await fetch(url);
+const response = await fetch(url)
+const text = await response.text()
 
-const text = await response.text();
+parseM3U(text)
 
-parseM3U(text);
+}catch(err){
 
-}
-
-catch(error){
-
-console.error("Error cargando lista:",error);
-
-alert("No se pudo cargar la lista");
+alert("Error cargando la lista")
 
 }
 
 }
 
 
-
-/* parsear archivo M3U */
 
 function parseM3U(data){
 
-channels = [];
+const lines = data.split("\n")
 
-const lines = data.split("\n");
+let channels = []
 
 for(let i=0;i<lines.length;i++){
 
 if(lines[i].startsWith("#EXTINF")){
 
-let info = lines[i];
+const info = lines[i]
+const url = lines[i+1]?.trim()
 
-let name = info.split(",")[1] || "Canal";
+if(!url) continue
 
-let stream = lines[i+1];
-
-let countryMatch = info.match(/tvg-country="(.*?)"/);
-
-let country = countryMatch ? countryMatch[1] : "Otros";
+const name = info.split(",")[1] || "Canal"
+const countryMatch = info.match(/tvg-country="(.*?)"/)
+const country = countryMatch ? countryMatch[1] : "Otros"
 
 channels.push({
 
-name:name.trim(),
-country:country.trim(),
-stream:stream.trim()
+name,
+url,
+country
 
-});
-
-}
+})
 
 }
 
-renderCountries();
+}
+
+renderChannels(channels)
 
 }
 
 
 
-/* agrupar por pais */
+function renderChannels(channels){
 
-function renderCountries(){
+channelList.innerHTML = ""
 
-const container = document.getElementById("channelList");
+const countries = {}
 
-container.innerHTML = "";
+channels.forEach(c=>{
 
+if(!countries[c.country]){
 
-const countries = {};
-
-
-channels.forEach(channel=>{
-
-if(!countries[channel.country]){
-
-countries[channel.country] = [];
+countries[c.country] = []
 
 }
 
-countries[channel.country].push(channel);
+countries[c.country].push(c)
 
-});
+})
 
 
 Object.keys(countries).sort().forEach(country=>{
 
+const section = document.createElement("div")
+section.className = "country-section"
 
-let section = document.createElement("div");
+const header = document.createElement("div")
+header.className = "country-header"
+header.innerHTML = `${country} (${countries[country].length} canales)`
 
-section.className = "country-section";
+const grid = document.createElement("div")
+grid.className = "country-channels"
 
+header.addEventListener("click",()=>{
 
-let header = document.createElement("div");
+grid.classList.toggle("open")
 
-header.className = "country-header";
-
-header.innerText = country + " (" + countries[country].length + " canales)";
-
-
-let list = document.createElement("div");
-
-list.className = "country-channels";
+})
 
 
 countries[country].forEach(channel=>{
 
+const card = document.createElement("div")
+card.className = "channel-card"
 
-let card = document.createElement("div");
+card.innerHTML = `<p>${channel.name}</p>`
 
-card.className = "channel-card";
+card.onclick = ()=>{
 
-
-let name = document.createElement("p");
-
-name.innerText = channel.name;
-
-
-card.appendChild(name);
-
-
-card.onclick = () => playChannel(channel.stream);
-
-
-list.appendChild(card);
-
-});
-
-
-header.onclick = () => {
-
-list.classList.toggle("open");
-
-};
-
-
-section.appendChild(header);
-
-section.appendChild(list);
-
-container.appendChild(section);
-
-});
+video.src = channel.url
+video.play()
 
 }
 
+grid.appendChild(card)
+
+})
+
+
+section.appendChild(header)
+section.appendChild(grid)
+
+channelList.appendChild(section)
+
+})
+
+}

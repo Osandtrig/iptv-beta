@@ -1,52 +1,93 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+
 <meta charset="UTF-8">
 <title>Mi Plataforma IPTV</title>
+
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
 <header>
+
 <h1>📺 Mi Plataforma IPTV</h1>
+
 </header>
 
+
+<!-- reproductor -->
+
 <section class="player-section">
+
 <div class="player-wrapper">
+
 <video id="videoPlayer" controls></video>
+
 </div>
+
 </section>
 
-  <h2>Cargar lista IPTV</h2>
-  
-<section class="playlist-loader">
+
+<!-- panel de control -->
+
+<div class="control-panel">
+
+<h3>🔗 Cargar lista IPTV</h3>
+
+<div class="playlist-loader">
+
 <input id="m3uUrl" placeholder="Pega aquí la URL de tu lista .m3u">
-<button onclick="loadPlaylist()">Cargar lista</button>
-</section>
+
+<button onclick="loadPlaylist()">Cargar</button>
+
+</div>
+
+
 <div class="filters">
 
+<label>🌍 País</label>
+
 <select id="countryFilter">
-<option value="">Todos los países</option>
+<option value="">Todos</option>
 </select>
 
+
+<label>🗣 Idioma</label>
+
 <select id="languageFilter">
-<option value="">Todos los idiomas</option>
+<option value="">Todos</option>
 </select>
 
 </div>
-  
+
+</div>
+
+
+<!-- canales -->
+
 <h2>Canales</h2>
+
 <div id="channelList"></div>
 
+
+<!-- libreria HLS -->
+
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<!-- arquitectura -->
 
 <script src="model/channels.js"></script>
 <script src="js/player.js"></script>
 <script src="js/controller.js"></script>
 
 </body>
+
 </html>
+
 

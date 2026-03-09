@@ -1,5 +1,5 @@
 
-// controller.js
+// controller.js completo con nombres de países
 
 const video = document.getElementById("videoPlayer"); 
 const loadBtn = document.getElementById("loadPlaylist");
@@ -25,7 +25,7 @@ async function loadPlaylist() {
     }
 }
 
-// === PARSER M3U MEJORADO ===
+// === PARSER M3U MEJORADO CON NOMBRES DE PAÍS ===
 function parseM3U(data) {
     const lines = data.split("\n");
     let channels = [];
@@ -38,23 +38,22 @@ function parseM3U(data) {
 
             const name = info.split(",")[1] || "Canal";
 
-            // === Detección de país mejorada ===
+            // === Detección de país usando la función nombrePaisPorCodigo ===
             let country = "Otros";
 
-            // Primero intento con tvg-country
             const countryMatch = info.match(/tvg-country="(.*?)"/i);
             if (countryMatch && countryMatch[1]) {
-                country = countryMatch[1].toUpperCase();
+                country = nombrePaisPorCodigo(countryMatch[1].toUpperCase());
             } else {
-                // Si no hay tvg-country, pruebo con tvg-id
                 const idMatch = info.match(/tvg-id="(.*?)"/i);
                 if (idMatch && idMatch[1]) {
                     const id = idMatch[1].toLowerCase();
-                    if (id.includes(".us")) country = "US";
-                    else if (id.includes(".es")) country = "ES";
-                    else if (id.includes(".br")) country = "BR";
-                    else if (id.includes(".ar")) country = "AR";
-                    // Puedes agregar más países aquí
+                    // Mapear sufijos a nombre de país
+                    if (id.includes(".us")) country = "Estados Unidos";
+                    else if (id.includes(".es")) country = "España";
+                    else if (id.includes(".br")) country = "Brasil";
+                    else if (id.includes(".ar")) country = "Argentina";
+                    else country = "Otros"; // fallback
                 }
             }
 
@@ -67,6 +66,72 @@ function parseM3U(data) {
     }
 
     renderChannels(channels);
+}
+
+// === FUNCION AUXILIAR PARA MAPEAR CÓDIGOS A NOMBRES DE PAÍS ===
+function nombrePaisPorCodigo(code) {
+    const mapa = {
+        "AL": "Albania",
+        "DZ": "Argelia",
+        "AR": "Argentina",
+        "AU": "Australia",
+        "AT": "Austria",
+        "BA": "Bosnia y Herzegovina",
+        "BE": "Bélgica",
+        "BR": "Brasil",
+        "BG": "Bulgaria",
+        "CA": "Canadá",
+        "CL": "Chile",
+        "CO": "Colombia",
+        "CR": "Costa Rica",
+        "CY": "Chipre",
+        "CZ": "República Checa",
+        "DE": "Alemania",
+        "DK": "Dinamarca",
+        "DO": "República Dominicana",
+        "EC": "Ecuador",
+        "EG": "Egipto",
+        "ES": "España",
+        "FI": "Finlandia",
+        "FR": "Francia",
+        "GR": "Grecia",
+        "HR": "Croacia",
+        "HU": "Hungría",
+        "ID": "Indonesia",
+        "IE": "Irlanda",
+        "IL": "Israel",
+        "IN": "India",
+        "IT": "Italia",
+        "JM": "Jamaica",
+        "JP": "Japón",
+        "KE": "Kenia",
+        "KR": "Corea del Sur",
+        "LT": "Lituania",
+        "LV": "Letonia",
+        "MT": "Malta",
+        "MX": "México",
+        "MY": "Malasia",
+        "NG": "Nigeria",
+        "NL": "Países Bajos",
+        "NO": "Noruega",
+        "NZ": "Nueva Zelanda",
+        "PA": "Panamá",
+        "PE": "Perú",
+        "PH": "Filipinas",
+        "PK": "Pakistán",
+        "PL": "Polonia",
+        "PT": "Portugal",
+        "RO": "Rumanía",
+        "RS": "Serbia",
+        "SA": "Arabia Saudita",
+        "SE": "Suecia",
+        "SG": "Singapur",
+        "SK": "Eslovaquia",
+        "SV": "El Salvador",
+        "US": "Estados Unidos",
+        "UK": "Reino Unido"
+    };
+    return mapa[code] || "Otros";
 }
 
 // === RENDERIZADO DE CANALES ===
@@ -113,4 +178,3 @@ function renderChannels(channels) {
         channelList.appendChild(section);
     });
 }
-

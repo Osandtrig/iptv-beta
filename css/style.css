@@ -1,280 +1,145 @@
 
-body{
-
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
-background:linear-gradient(180deg,#0f0f0f,#1a1a1a);
-color:white;
-
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto;
+  background: linear-gradient(180deg,#0f0f0f,#1a1a1a);
+  color: white;
 }
-
 
 /* header */
-
-header{
-
-background:#000;
-padding:20px;
-text-align:center;
-box-shadow:0 4px 15px rgba(0,0,0,0.5);
-
+header {
+  background: #000;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
-
-header h1{
-
-margin:0;
-font-size:28px;
-
-}
-
+header h1 { margin:0; font-size:28px; }
 
 /* reproductor */
-
-.player-section{
-
-display:flex;
-justify-content:center;
-margin-top:30px;
-
+.player-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
-
-.player-wrapper{
-
-width:900px;
-max-width:90%;
-aspect-ratio:16/9;
-background:black;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.7);
-
+.player-wrapper {
+  width: 900px;
+  max-width: 90%;
+  aspect-ratio: 16/9;
+  background: black;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
 }
-
-#videoPlayer{
-
-width:100%;
-height:100%;
-object-fit:contain;
-
-}
-
+#videoPlayer { width:100%; height:100%; object-fit:contain; }
 
 /* panel control */
-
-.control-panel{
-
-max-width:900px;
-margin:40px auto;
-padding:25px;
-background:#151515;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
-
+.control-panel {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #151515;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
-
-.control-panel h3{
-
-margin-top:0;
-font-weight:500;
-color:#ddd;
-
-}
-
+.control-panel h3 { margin-top:0; font-weight:500; color:#ddd; }
 
 /* loader */
-
-.playlist-loader{
-
-display:flex;
-gap:10px;
-margin-top:15px;
-
+.playlist-loader {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
-
-.playlist-loader input{
-
-flex:1;
-padding:12px;
-border:none;
-border-radius:8px;
-background:#1f1f1f;
-color:white;
-font-size:14px;
-
+.playlist-loader input {
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#1f1f1f;
+  color:white;
+  font-size:14px;
 }
-
-.playlist-loader input:focus{
-
-outline:none;
-box-shadow:0 0 0 2px #e50914;
-
+.playlist-loader input:focus {
+  outline:none;
+  box-shadow:0 0 0 2px #e50914;
 }
-
-.playlist-loader button{
-
-padding:12px 20px;
-border:none;
-border-radius:8px;
-background:#e50914;
-color:white;
-font-weight:600;
-cursor:pointer;
-transition:0.2s;
-
+.playlist-loader button {
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  background:#e50914;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s;
 }
-
-.playlist-loader button:hover{
-
-background:#ff2a2a;
-
-}
-
+.playlist-loader button:hover { background:#ff2a2a; }
 
 /* filtros */
-
-.filters{
-
-display:flex;
-align-items:center;
-gap:10px;
-margin-top:20px;
-flex-wrap:wrap;
-
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
-
-.filters label{
-
-font-size:13px;
-color:#aaa;
-
+.filters label { font-size:13px; color:#aaa; }
+.filters select {
+  padding:10px;
+  border-radius:6px;
+  border:none;
+  background:#1f1f1f;
+  color:white;
 }
-
-.filters select{
-
-padding:10px;
-border-radius:6px;
-border:none;
-background:#1f1f1f;
-color:white;
-
-}
-
 
 /* titulo canales */
-
-h2{
-
-text-align:center;
-margin-top:40px;
-font-weight:500;
-
-}
-
+h2 { text-align:center; margin-top:40px; font-weight:500; }
 
 /* contenedor paises */
-
-#channelList{
-
-max-width:1200px;
-margin:auto;
-padding:20px;
-
-}
-
+#channelList { max-width:1200px; margin:auto; padding:20px; }
 
 /* seccion pais */
-
-.country-section{
-
-margin-bottom:15px;
-
+.country-section { margin-bottom:15px; }
+.country-header {
+  background:#1c1c1c;
+  padding:15px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:500;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:0.2s;
 }
-
-
-/* encabezado pais */
-
-.country-header{
-
-background:#1c1c1c;
-padding:15px;
-border-radius:10px;
-cursor:pointer;
-font-weight:500;
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:0.2s;
-
-}
-
-.country-header:hover{
-
-background:#e50914;
-
-}
-
+.country-header:hover { background:#e50914; }
 
 /* canales del pais */
-
-.country-channels{
-
-display:none;
-grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-gap:20px;
-padding:20px 0;
-
+.country-channels {
+  display:none;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  gap: 20px;
+  padding:20px 0;
 }
-
-.country-channels.open{
-
-display:grid;
-
-}
-
+.country-channels.open { display:grid; }
 
 /* tarjetas canal */
-
-.channel-card{
-
-background:#1a1a1a;
-border-radius:12px;
-padding:15px;
-cursor:pointer;
-transition:0.25s;
-box-shadow:0 5px 15px rgba(0,0,0,0.5);
-text-align:center;
-
+.channel-card {
+  background:#1a1a1a;
+  border-radius:12px;
+  padding:15px;
+  cursor:pointer;
+  transition:0.25s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.5);
+  text-align:center;
 }
-
-.channel-card:hover{
-
-transform:translateY(-5px) scale(1.05);
-background:#e50914;
-
-}
-
-.channel-card p{
-
-margin:0;
-font-size:14px;
-
-}
-
+.channel-card:hover { transform:translateY(-5px) scale(1.05); background:#e50914; }
+.channel-card img { width:100%; border-radius:6px; margin-bottom:5px; }
+.channel-card p { margin:0; font-size:14px; }
+.channel-card small { color:#aaa; }
 
 /* responsive */
-
 @media (max-width:700px){
-
-header h1{
-
-font-size:22px;
-
+  header h1 { font-size:22px; }
+  .country-channels { grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); }
 }
 
-.country-channels{
 
-grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
-
-}
-
-}
